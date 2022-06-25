@@ -31,8 +31,8 @@ This application uses Python 3.7 or above.
 
 The following libraries are used:
 
-- **Path**
-- **CSV**
+- **Path** - XXX
+- **CSV** - XXX
 - **Fire** - This library is used to accept command-line arguments. Please see [Python Fire Guide](https://google.github.io/python-fire/guide/) for more information.
 - **Questionary** - This library is used to provide user dialogs for the CLI. Please see [Questionary Documentation](https://pypi.org/project/questionary/) for more information. You can access the [Questionary Source Code here](https://github.com/tmbo/questionary).
 
@@ -70,13 +70,43 @@ pip install questionary
 
 ## Usage
 
-This section should include screenshots, code blocks, or animations explaining how to use your project.
+### Launching the Loan Qualifer Application
+
+To use the Loan Qualifier application, you must launch the terminal and enter in the following:
+
+```
+python app.python
+```
+
+The Loan Qualifier application will then begin a series of questions to determine which loans that you qualify for.
+
+### Determining Qualifying Loans
+
+The Loan Qualifier application will walk the applicant through several questions that it uses to determine the DTI and LTV. Based on the applicant's DTI and LTV, the applicant will be matched with any loans that they qualify for.
+
+Below is a screenshot of questions that the applicant will be asked:
+
+![Screenshot of Qualifying Loans application]()
+
+### Saving Qualifying Loans
+
+The applicant has an option to save qualifying loans to a CSV file which they can then view in Excel or any application
+that handles CSV files.
+
+If there are no qualifying loans, then the applicant will be notified and the application will exit.
+
+If there are qualifying loans, the applicant can choose whether or not they want to save the file to CSV.
+
+If the applicant chooses to save the loans, then they will be prompted for a file path to save the file.
 
 ---
 
 ## Contributors
 
-In this section, list all the people who contribute to this project. You might want recruiters or potential collaborators to reach you, so include your contact email and, optionally, your LinkedIn or Twitter profile.
+This sample application was authored by:
+
+- Quinn Wong (quinn.wong@gmail.com)
+- LinkedIn: https://www.linkedin.com/in/quinnwong/
 
 ---
 
