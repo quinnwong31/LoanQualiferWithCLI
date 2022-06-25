@@ -110,26 +110,45 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
 
+    - If no qualifying loans exist, when prompting a user to save a file, then 
+        the program should notify the user and exit.
+    - Given that I have a list of qualifying loans, when I’m prompted to save the results, then 
+        I should be able to opt out of saving the file.
+    - Given that I have a list of qualifying loans, when I choose to save the loans, the 
+        tool should prompt for a file path to save the file.
+    - Given that I’m using the loan qualifier CLI, when I choose to save the loans, then 
+        the tool should save the results as a CSV file.
+
+
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
+
+    # There are no qualifying loans that exist.  Notify the user and exit.
     if (len(qualifying_loans) == 0):
         print("There are no qualifying loans to save.")
         return
 
+    # Prompt the user whether or not they want to save the file.
+    # The user can opt of saving the file by entering in "No" at the prompt.
     save_qualifying_loans = questionary.confirm(
         "Would you like to save your qualifying loans to a csv file?").ask()
+
+    # If the user chooses to save the loans, then prompt for a file path to
+    # save the file.
     if save_qualifying_loans == True:
         csvpath = questionary.text(
             "Enter a file path to save your qualifying loans to:").ask()
         csvpath = Path(csvpath)
+
+        # Save the results as a CSV file.
         save_csv(csvpath, qualifying_loans)
     else:
         print("You have selected not to save your qualifying loans.")
 
 
 def save_csv(csvpath, qualifying_loans):
-    """Saves the qualifying_loans to the specified CSV path.
+    """Saves the qualifying loans to the specified CSV path.
 
     Args:
         csvpath: The path to the csv file containing qualifying loans
@@ -177,6 +196,9 @@ def run():
 
     # Save qualifying loans
     save_qualifying_loans(qualifying_loans)
+
+    # Exit the application
+    print("Thank you for using the Loan Qualifer application.")
 
 
 if __name__ == "__main__":
