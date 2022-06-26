@@ -1,0 +1,25 @@
+  664  git clone https://github.com/quinnwong31/LoanQualiferWithCLI.git
+ 1006  conda activate dev
+ 1007  pip install tabulate
+ 1008  python app.py
+ 1009  clear
+ 1010  python app.py
+ 1011  history 50 > terminal_history.txt
+ 1012  vim terminal_history.txt
+ 1013  git status
+ 1014  git add images
+ 1015  git commit -m "Adding images for README.md"
+ 1016  git push
+ 1017  git status
+ 1018  git diff README.md
+ 1019  git status
+ 1020  git add README.md
+ 1021  git commit -m "Added MIT license, images and updated installation guide"
+ 1022  git push
+ 1023  git status
+ 1024  git diff app.py
+ 1025  git add app.py
+ 1026  git commit
+ 1027  git commit -m "Added tabulate support for displaying loans in a nice table"
+ 1028  git pus
+ 1029  git push 
