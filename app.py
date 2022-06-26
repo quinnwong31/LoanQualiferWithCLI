@@ -10,6 +10,7 @@ import sys
 import fire
 import questionary
 import csv
+from tabulate import tabulate
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
@@ -110,15 +111,10 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
 
-    - If no qualifying loans exist, when prompting a user to save a file, then 
-        the program should notify the user and exit.
-    - Given that I have a list of qualifying loans, when I’m prompted to save the results, then 
-        I should be able to opt out of saving the file.
-    - Given that I have a list of qualifying loans, when I choose to save the loans, the 
-        tool should prompt for a file path to save the file.
-    - Given that I’m using the loan qualifier CLI, when I choose to save the loans, then 
-        the tool should save the results as a CSV file.
-
+    - If the applicant does not qualify for any loans, then notify the user and exit. 
+    - If the applicant qualifies for loans, then display the loans that the applicant 
+        qualifies for.   Also, prompt the applicant whether they want to save the file. 
+        The applicant can opt out of saving the file by entering in "N" at the prompt.
 
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
@@ -126,8 +122,14 @@ def save_qualifying_loans(qualifying_loans):
 
     # There are no qualifying loans that exist.  Notify the user and exit.
     if (len(qualifying_loans) == 0):
-        print("There are no qualifying loans to save.")
+        print("You do not qualify for any loans.")
         return
+
+    # Display loans that the user qualifies for in a nice table.
+    print("You qualify for the following loans:")
+    header = ["Lender", "Max Loan Amount", "Max LTV",
+              "Max DTI", "Min Credit Score", "Interest Rate"]
+    print(tabulate(qualifying_loans, headers=header, tablefmt="grid"))
 
     # Prompt the user whether or not they want to save the file.
     # The user can opt of saving the file by entering in "No" at the prompt.
@@ -152,6 +154,7 @@ def save_csv(csvpath, qualifying_loans):
 
     Args:
         csvpath: The path to the csv file containing qualifying loans
+        qualifying_loans: The loans that the applicant qualifies for
 
     """
 
@@ -177,7 +180,7 @@ def save_csv(csvpath, qualifying_loans):
             csvwriter.writerow(loan)
 
     print(
-        f"Qualifying loans have been saved successfully to '{csvpath}/qualifying_loans.csv'.")
+        f"Qualifying loans have been saved successfully to '{csvpath}'.")
 
 
 def run():
