@@ -31,18 +31,19 @@ This application uses Python 3.7 or above.
 
 The following libraries are used:
 
-- **Path** - XXX
-- **CSV** - XXX
-- **Fire** - This library is used to accept command-line arguments. Please see [Python Fire Guide](https://google.github.io/python-fire/guide/) for more information.
-- **Questionary** - This library is used to provide user dialogs for the CLI. Please see [Questionary Documentation](https://pypi.org/project/questionary/) for more information. You can access the [Questionary Source Code here](https://github.com/tmbo/questionary).
+- **pathlib** - This library is used to determine the path to the daily_rate_sheet.csv and the path to save the qualifying_loans.csv to. Please see [pathlib documentation](https://docs.python.org/3/library/pathlib.html) for more information.
+- **csv** - This library is used to read and write csv files. Please see [csv documentation](https://docs.python.org/3/library/csv.html) for more information.
+- **fire** - This library is used to accept command-line arguments. Please see [Python Fire Guide](https://google.github.io/python-fire/guide/) for more information.
+- **questionary** - This library is used to provide user dialogs for the CLI. Please see [Questionary Documentation](https://pypi.org/project/questionary/) for more information. You can access the [Questionary Source Code here](https://github.com/tmbo/questionary).
+- **tabulate** - This library is used to display the qualifying loans in the CLI. Please see [Tabulate Documentation](https://pypi.org/project/tabulate/) for more information.
 
 ---
 
 ## Installation Guide
 
-`Path` and `CSV` libraries are already installed with Python 3.7.
+The `pathlib` and `csv` libraries are already installed with Python 3.7.
 
-You will need to install `Fire` and `Questionary`. In order to use the Loan Qualifier application, you must install the following libraries first:
+In order to use the Loan Qualifier application, you will need to install `fire`, `questionary` and `tabulate`. Below are the instructions for installing each required library.
 
 **Fire**
 
@@ -66,6 +67,17 @@ To install Questionary, do the following steps:
 pip install questionary
 ```
 
+**Tabulate**
+
+To install Tabulate, do the following steps:
+
+1. Launch the terminal.
+2. Enter the following:
+
+```
+pip install tabulate
+```
+
 ---
 
 ## Usage
@@ -86,7 +98,7 @@ The Loan Qualifier application will walk the applicant through several questions
 
 Below is a screenshot of questions that the applicant will be asked:
 
-![Screenshot of Qualifying Loans application]()
+![Screenshot of Qualifying Loans Questions](/images/loan_qualifier_questions.jpg)
 
 ### Saving Qualifying Loans
 
@@ -98,6 +110,10 @@ If there are no qualifying loans, then the applicant will be notified and the ap
 If there are qualifying loans, the applicant can choose whether or not they want to save the file to CSV.
 
 If the applicant chooses to save the loans, then they will be prompted for a file path to save the file.
+
+Below is a screenshot of the application requesting if the applicant wants to save the qualifying loans to CSV.
+
+![Screenshot of Qualifying Loans Save Feature](/images/loan_qualifier_save.jpg)
 
 ---
 
@@ -112,4 +128,12 @@ This sample application was authored by:
 
 ## License
 
-When you share a project on a repository, especially a public one, it's important to choose the right license to specify what others can and can't with your source code and files. Use this section to include the license you want to use.
+The MIT License (MIT)
+
+Copyright (c) 2022 Quinn Wong
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
